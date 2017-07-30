@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"  >
+  <!--  Font Awesome の CDN  -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <title>Canvas に回転した画像を表示するサンプル001</title>
+</head>
+<body>
+
+  <header>
+    <h1>Canvas に回転した画像を表示するサンプル001</h1>
+  </header>
+
+  <div class="well">
+    <p>画像の中心で回転させる。</p>
+  </div>
+
+  <div class="panel panel-success">
+    <div class="panel-heading">いろいろ表示させてみる。</div>
+    <div class="panel-body">
+      <canvas id="screen"></canvas>
+    </div>
+  </div>
+
+  <div class="panel panel-success">
+    <div class="panel-heading">ポイントとなるコード</div>
+    <div class="panel-body">
+      <pre><code>const TO_RADIANS = Math.PI/180;
+/**
+ * 回転させた画像を表示する
+ * @param {object} Imageオブジェクト
+ * @param {number} x - 画像の中心となるX座標
+ * @param {number} y - 画像の中心となるY座標
+ * @param {number} angle - 回転する角度[度]
+ */
+const drawRotatedImage = (image, x, y, angle) =&gt; {
+    // コンテキストを保存する
+    context.save();
+    // 回転の中心に原点を移動する
+    context.translate(x, y);
+    // canvasを回転する
+    context.rotate(angle * TO_RADIANS);
+    // 画像サイズの半分だけずらして画像を描画する
+    context.drawImage(image, -(image.width/2), -(image.height/2));
+    // コンテキストを元に戻す
+    context.restore();
+}</code></pre>
+    </div>
+  </div>
+
+  <div class="panel panel-success">
+    <div class="panel-heading">解説図</div>
+    <div class="panel-body">
+      <img src="img/rotate-image-on-canvas.png" />
+    </div>
+  </div>
+
+  <div class="well">
+    <p>参考</p>
+    <ul>
+      <li><a href="http://creativejs.com/2012/01/day-10-drawing-rotated-images-into-canvas/index.html">Day 10 – Drawing rotated images into canvas | CreativeJS</a></li>
+    </ul>
+
+    <p>ソースコードはこちら</p>
+    <ul>
+      <li><a href="https://github.com/laboradian/rotate-image-on-canvas-sample001">laboradian/rotate-image-on-canvas-sample001</a></li>
+    </ul>
+  </div>
+
+  <hr>
+  <footer>© 2017 <a href="http://laboradian.com/">Laboradian</a></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script src="js/main.js" charset="utf-8"></script>
+</body>
+</html>
