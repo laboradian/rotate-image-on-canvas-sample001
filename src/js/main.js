@@ -68,7 +68,7 @@ window.addEventListener('load', () => {
                 y: (IMG_HEIGHT/2) + (IMG_HEIGHT * 3) + (MARGIN_V * 4) + 20
             };
             ctx.fillText('回転', origin.x - (IMG_WIDTH/2), origin.y - (IMG_HEIGHT/2 + 30));
-            ctx.clearRect(origin.x - 80, origin.y - 80, 150, 150);
+            ctx.clearRect(origin.x - 80, origin.y - 80, 160, 160);
             drawRotatedImage(img, origin.x, origin.y, angle);
             if (angle > 360) {
                 angle = 0;
