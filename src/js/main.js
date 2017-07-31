@@ -19,9 +19,9 @@ const IMG_WIDTH = 100;
 const IMG_HEIGHT = 100;
 const MARGIN_H = 50;
 const MARGIN_V = 80;
-//var COLUMN_NUM = 4;
-//var ROW_NUM = 2;
-window.onload = function() {
+const COLUMN_NUM = 6;
+
+window.addEventListener('load', () => {
     const canvas = document.querySelector('#screen');
     canvas.width = (IMG_WIDTH * 6) + (MARGIN_H * 7);
     canvas.height = (IMG_HEIGHT * 4) + (MARGIN_V * 5);
@@ -38,7 +38,6 @@ window.onload = function() {
 
     let origin = {x: MARGIN_H, y: MARGIN_V};
     const ctx = canvas.getContext('2d');
-    //ctx.font = "bold 18px 'ＭＳ Ｐゴシック'";
     ctx.font = "bold 18px Verdana, '游ゴシック', YuGothic";
     ctx.fillStyle = "green";
     const img = new Image();
@@ -50,8 +49,8 @@ window.onload = function() {
         ctx.drawImage(img, origin.x, origin.y);
 
         for (i=0; i<12; i++) {
-            ix = i % 6;
-            iy = parseInt(i / 6);
+            ix = i % COLUMN_NUM;
+            iy = parseInt(i / COLUMN_NUM);
             angle_tmp = 30 * (i + 1);
 
             origin = {
@@ -59,7 +58,7 @@ window.onload = function() {
                 y: (IMG_HEIGHT/2) + (IMG_HEIGHT * (iy + 1)) + (MARGIN_V * (iy + 2))
             };
             drawRotatedImage(img, origin.x, origin.y, angle_tmp);
-            ctx.fillText(`${angle_tmp}°`, origin.x - 50, origin.y - 70);
+            ctx.fillText(`${angle_tmp}°`, origin.x - (IMG_WIDTH/2), origin.y - (IMG_HEIGHT/2 + 20));
         }
 
         let angle = 0;
@@ -68,7 +67,7 @@ window.onload = function() {
                 x: (IMG_WIDTH/2) + MARGIN_H,
                 y: (IMG_HEIGHT/2) + (IMG_HEIGHT * 3) + (MARGIN_V * 4) + 20
             };
-            ctx.fillText('回転', origin.x - 50, origin.y - 80);
+            ctx.fillText('回転', origin.x - (IMG_WIDTH/2), origin.y - (IMG_HEIGHT/2 + 30));
             ctx.clearRect(origin.x - 80, origin.y - 80, 200, 200);
             drawRotatedImage(img, origin.x, origin.y, angle);
             if (angle > 360) {
@@ -81,4 +80,4 @@ window.onload = function() {
         window.requestAnimationFrame(step);
     });
     img.src = './img/icon.png';
-};
+});
