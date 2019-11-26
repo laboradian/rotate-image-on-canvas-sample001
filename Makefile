@@ -33,9 +33,9 @@ images: src/img/*
 	cp src/img/rotate-image-on-canvas.png dist/img/rotate-image-on-canvas.png
 
 clean:
-	rm dist/js/main.js
-	rm dist/js/main.js.map
-	rm dist/css/main.css
-	rm dist/css/main.css.map
-	rm dist/img/icon.png
-	rm dist/img/rotate-image-on-canvas.png
+	rm -f dist/js/main.js
+	rm -f dist/js/main.js.map
+	rm -f dist/css/main.css
+	rm -f dist/css/main.css.map
+	rm -f dist/img/icon.png
+	rm -f dist/img/rotate-image-on-canvas.png
