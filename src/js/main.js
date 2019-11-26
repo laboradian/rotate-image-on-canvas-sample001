@@ -19,12 +19,12 @@ const IMG_WIDTH = 100;
 const IMG_HEIGHT = 100;
 const MARGIN_H = 50;
 const MARGIN_V = 80;
-const COLUMN_NUM = 6;
+const COLUMN_NUM = 5;
 
 window.addEventListener('load', () => {
     const canvas = document.querySelector('#screen');
-    canvas.width = (IMG_WIDTH * 6) + (MARGIN_H * 7);
-    canvas.height = (IMG_HEIGHT * 4) + (MARGIN_V * 5);
+    canvas.width = (IMG_WIDTH * COLUMN_NUM) + (MARGIN_H * 7);
+    canvas.height = (IMG_HEIGHT * 5) + (MARGIN_V * 6);
 
     const TO_RADIANS = Math.PI/180;
     const drawRotatedImage = function(image, x, y, angle) {
@@ -65,7 +65,7 @@ window.addEventListener('load', () => {
         const step = (/*timestamp*/) => {
             origin = {
                 x: (IMG_WIDTH/2) + MARGIN_H,
-                y: (IMG_HEIGHT/2) + (IMG_HEIGHT * 3) + (MARGIN_V * 4) + 20
+                y: (IMG_HEIGHT/2) + (IMG_HEIGHT * 4) + (MARGIN_V * 5) + 20
             };
             ctx.fillText('回転', origin.x - (IMG_WIDTH/2), origin.y - (IMG_HEIGHT/2 + 30));
             ctx.clearRect(origin.x - 80, origin.y - 80, 160, 160);
