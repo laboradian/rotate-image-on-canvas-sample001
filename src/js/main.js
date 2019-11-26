@@ -14,17 +14,21 @@ console.log('%c 🌈 Laboradian.com 🌈 %c http://laboradian.com ',
   'background: #2383BF; color: #fff; font-size: 1.4em;',
   'background: #e3e3e3; color: #000; margin-bottom: 1px; padding-top: 4px; padding-bottom: 1px;');
 
+const THRESHOLD_WIDTH = 500;
+const SCREEN_WIDTH = $(window).width();
 
 const IMG_WIDTH = 100;
 const IMG_HEIGHT = 100;
 const MARGIN_H = 50;
 const MARGIN_V = 80;
-const COLUMN_NUM = 5;
+const COLUMN_NUM = (SCREEN_WIDTH > THRESHOLD_WIDTH) ? 5 : 2;
+console.log('COLUMN_NUM =', COLUMN_NUM);
 
 window.addEventListener('load', () => {
+    const VERT_NUM = 1 + (Math.ceil(12/COLUMN_NUM));
     const canvas = document.querySelector('#screen');
-    canvas.width = (IMG_WIDTH * COLUMN_NUM) + (MARGIN_H * 7);
-    canvas.height = (IMG_HEIGHT * 5) + (MARGIN_V * 6);
+    canvas.width = (IMG_WIDTH * COLUMN_NUM) + (MARGIN_H * (COLUMN_NUM + 1));
+    canvas.height = (IMG_HEIGHT * VERT_NUM) + (MARGIN_V * (VERT_NUM + 1));
 
     const TO_RADIANS = Math.PI/180;
     const drawRotatedImage = function(image, x, y, angle) {
@@ -64,12 +68,12 @@ window.addEventListener('load', () => {
         let angle = 0;
         const step = (/*timestamp*/) => {
             origin = {
-                x: (IMG_WIDTH/2) + MARGIN_H,
-                y: (IMG_HEIGHT/2) + (IMG_HEIGHT * 4) + (MARGIN_V * 5) + 20
+                x: IMG_WIDTH + MARGIN_H,
+                y: MARGIN_V
             };
-            ctx.fillText('回転', origin.x - (IMG_WIDTH/2), origin.y - (IMG_HEIGHT/2 + 30));
-            ctx.clearRect(origin.x - 80, origin.y - 80, 160, 160);
-            drawRotatedImage(img, origin.x, origin.y, angle);
+            ctx.fillText('回転', origin.x + MARGIN_H, origin.y - 25);
+            ctx.clearRect(origin.x + 20, origin.y - 25, 160, 160);
+            drawRotatedImage(img, origin.x + IMG_WIDTH, origin.y + 50, angle);
             if (angle > 360) {
                 angle = 0;
             } else {

@@ -30,7 +30,7 @@ main.css: src/scss/main.scss
 
 images: src/img/*
 	cp src/img/icon.png dist/img/icon.png
-	cp src/img/rotate-image-on-canvas.png dist/img/rotate-image-on-canvas.png
+	cp src/img/rotate-image-on-canvas2.png dist/img/rotate-image-on-canvas2.png
 
 clean:
 	rm -f dist/js/main.js
@@ -38,4 +38,4 @@ clean:
 	rm -f dist/css/main.css
 	rm -f dist/css/main.css.map
 	rm -f dist/img/icon.png
-	rm -f dist/img/rotate-image-on-canvas.png
+	rm -f dist/img/rotate-image-on-canvas2.png
