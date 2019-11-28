@@ -15,12 +15,12 @@ Build
 ### 開発用のビルドコマンド
 
 ```
-$ make
+$ npm run build
 ```
 
 ### 本番用のビルドコマンド
 
 ```
-$ make ENV=production
+$ npm run build-p
 ```
 
