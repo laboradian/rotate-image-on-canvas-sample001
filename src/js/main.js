@@ -10,7 +10,6 @@ const IMG_HEIGHT = 100;
 const MARGIN_H = 50;
 const MARGIN_V = 80;
 const COLUMN_NUM = (SCREEN_WIDTH > THRESHOLD_WIDTH) ? 5 : 2;
-console.log('COLUMN_NUM =', COLUMN_NUM);
 
 window.addEventListener('load', () => {
     const VERT_NUM = 1 + (Math.ceil(12/COLUMN_NUM));
