@@ -5,7 +5,8 @@
   "main": "src/main.js",
   "scripts": {
     "test": "",
-    "build": "make"
+    "build": "make",
+    "build-p": "make ENV=production clean all"
   },
   "repository": {
     "type": "git",
